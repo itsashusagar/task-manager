@@ -1,0 +1,109 @@
+Task Manager App - Code Explanation (Hinglish)
+
+1. App ki Main Functionalities:
+
+- Tasks add karna
+- Tasks ko complete mark karna
+- Tasks ko delete karna
+- Tasks ko filter karna (All, Completed, Pending)
+- Tasks ko drag and drop se reorder karna
+- Dark/Light mode toggle
+- Local storage me data save karna
+- Responsive design
+
+2. Code Structure Samjhao:
+
+a) Context Management (src/contexts/):
+
+TaskContext.tsx:
+- Ye sabhi tasks ka data manage karta hai
+- Main functions:
+  * addTask: Naya task create karta hai unique ID ke sath
+  * toggleTask: Task ko complete/incomplete toggle karta hai
+  * deleteTask: Task ko remove karta hai
+  * reorderTasks: Drag-drop ke baad tasks ki position change karta hai
+
+ThemeContext.tsx:
+- Dark/Light mode ka theme manage karta hai
+- System ki theme preference check karta hai
+- Selected theme ko yaad rakhta hai localStorage me
+
+b) Custom Hooks (src/hooks/):
+
+useLocalStorage.ts:
+- Browser ke localStorage me data save karta hai
+- Multiple tabs me sync rakhta hai
+- Error handling karta hai
+
+useTaskForm.ts:
+- Form ka state manage karta hai
+- Empty task add hone se rokta hai
+- Error messages handle karta hai
+
+c) Components (src/components/):
+
+TaskForm.tsx:
+- Naya task add karne ka form
+- Empty task submit nahi hone deta
+- Error messages dikhata hai
+
+TaskList.tsx:
+- Saare tasks ko display karta hai
+- Drag-drop functionality provide karta hai
+- Agar koi task nahi hai to empty message dikhata hai
+
+TaskItem.tsx:
+- Ek single task ka design
+- Complete/delete buttons
+- Drag handle for reordering
+
+TaskStats.tsx:
+- Tasks ka statistics dikhata hai
+- Progress bar se completion percentage dikhata hai
+- Total, completed, pending tasks count dikhata hai
+
+TaskFilter.tsx:
+- All/Completed/Pending filter buttons
+- Active filter highlight karta hai
+
+3. Important Features Detail:
+
+Drag and Drop:
+- react-beautiful-dnd library use ki hai
+- Sirf 'All' filter me drag-drop allow hai
+- Filtered view me drag-drop disabled hai
+
+Theme Toggle:
+- System theme detect karta hai
+- Manual toggle button hai
+- Theme change smooth transition ke sath hota hai
+
+Local Storage:
+- Har task localStorage me save hota hai
+- Page refresh ke baad bhi tasks rehte hain
+- Multiple tabs me sync rehta hai
+
+Task Stats:
+- Real-time update hota hai
+- Progress bar percentage dikhata hai
+- Color coding use kiya hai (green for completed, yellow for pending)
+
+4. Performance Optimization:
+
+- React.memo use kiya hai unnecessary renders rokne ke liye
+- useCallback and useMemo se performance improve ki hai
+- Tailwind CSS se fast loading hoti hai
+- TypeScript se type safety ensure hoti hai
+
+5. Error Handling:
+
+- Empty tasks add nahi ho sakte
+- Local storage errors handle kiye gaye hain
+- Invalid operations (like filtered view me drag-drop) prevent ki gayi hain
+
+6. Responsive Design:
+
+- Mobile se desktop tak responsive hai
+- Dark/Light mode dono me accha dikhta hai
+- Animations smooth hain
+- Touch devices pe bhi drag-drop work karta hai
